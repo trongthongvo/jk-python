@@ -19,13 +19,13 @@ pipeline {
 
     stage('test') {
       steps {
-        sh 'sleep 60 && curl -s localhost:8080'
+        sh 'sleep 60 && curl -s localhost:8000'
       }
     }
 
     stage('clear up') {
       steps {
-        sh 'fuser -k 8080/tcp'
+        sh 'fuser -k 8000/tcp'
       }
     }
      
