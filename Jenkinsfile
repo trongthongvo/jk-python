@@ -10,8 +10,20 @@ pipeline {
     DEPLOY_URL = "http://zing.vn"
 
   }
-  agent any
+  agent { 
+      docker { 
+          image 'python:3.7.2' 
+          } 
+      }
   stages {
+    
+    stage('Cloning Git') {
+      steps {
+        git([url: 'https://github.com/trongthongvo/jk-python.git', branch: 'main'])
+
+      }
+    }
+    
     stage('build') {
       steps {
         sh 'pip3 install -r requirements.txt'
